@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Oct  9 21:28:20 2020
+Code to calculate azimuth/elevation angles and put everything into a txt file
+Doesn't actually calculate azimuth angles rn bc I don't understand enough about space
 
-@author: 834140
+It takes a good while to run... probably something to do with the 7 million data entries
 """
 
 import csv
@@ -16,6 +16,7 @@ earthCart = np.array([361000, 0, -42100])
 #incomplete - need lat & long of earth from lunar fixed frame?
 def calc_azimuth(lat, long):
     return 0.0
+
 #method to calculate elevation angle (takes in latitutde and longitude in radians and height in km)
 def calc_elevation(lat, long, height):
     #radius of moon at this (lat, long)
