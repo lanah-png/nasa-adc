@@ -15,6 +15,18 @@ earthCart = np.array([361000, 0, -42100])
 #method to calculate azimuth angle
 #incomplete - need lat & long of earth from lunar fixed frame?
 def calc_azimuth(lat, long):
+    #this is what we need to figure out (the latitude and longitude of earth from the moon)
+    latE = 0.0
+    longE = 0.0
+    
+    #values that get plugged into azimuth angle formula
+    y = math.sin(longE - long) * math.cos(latE)
+    x = math.cos(lat) * math.sin(latE) - math.sin(lat) * math.cos(latE) * math.cos(longE - long)
+    
+    #azimuth in degrees
+    azimuth = math.degrees(math.atan2(y, x))
+    
+    #place holder return for now
     return 0.0
 
 #method to calculate elevation angle (takes in latitutde and longitude in radians and height in km)
