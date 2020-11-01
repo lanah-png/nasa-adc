@@ -19,8 +19,8 @@ with open('fulldata.csv', 'r') as read_obj:
     for row in csv_reader:
         
         #skip this row if the "radial angle" (modified lat) is too big
-        checkRow = (float(row[0]) + 89)
-        if checkRow > 0.001 or checkRow < -0.001:
+        checkRow = float(row[0]) + 90
+        if checkRow > 0.01 or checkRow < -0.01:
             continue
         
         #variable to store row of data that will be inserted into data matrix
@@ -31,9 +31,7 @@ with open('fulldata.csv', 'r') as read_obj:
             
             #change lat so radial angle???
             if (num == 0):
-                val += 89
-                if val < 0:
-                    val *= -1
+                val += 90
             #change long so azimuth angle (just but between 0 & 360 and then radians)
             elif (num == 1):
                 if (val < 0):
