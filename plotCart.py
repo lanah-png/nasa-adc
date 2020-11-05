@@ -51,7 +51,8 @@ Z = z
 X,Y = np.meshgrid(X,Y)
 ax.plot_surface(X,Y,Z, cmap='viridis')
 
-np.savetxt('squarefulldata.txt', z, delimiter=',')
+#saves the square matrix to a txt file
+#np.savetxt('squarefulldata.txt', z, delimiter=',')
 
 
 
