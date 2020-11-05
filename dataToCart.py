@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Nov  1 18:59:53 2020
-
-@author: 834140
+convert full data to cartesian and put in a txt file
 """
 
 import csv
@@ -11,25 +9,6 @@ import math
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
-
-def plot(inData):
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-    
-    
-    # Plot the surface.
-    surf = ax.plot_surface(inData[:, 0], inData[:, 1], inData[:, 2], cmap=cm.coolwarm,
-                           linewidth=0, antialiased=False)
-    
-    # Customize the z axis.
-    #ax.set_zlim(-1.01, 1.01)
-    #ax.zaxis.set_major_locator(LinearLocator(10))
-    #ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
-    
-    # Add a color bar which maps values to colors.
-    fig.colorbar(surf, shrink=0.5, aspect=5)
-    
-    plt.show()
 
 #make empty data matrix to store data
 dataP = [[]]
@@ -71,10 +50,13 @@ dataP = np.array(dataP)
 theta = dataP[:, 1]
 rad = dataP[:, 0]
 
-dataC = np.hstack(((rad * np.cos(theta)).reshape(7223208,1), (rad * np.sin(theta)).reshape(7223208, 1), dataP[:,2:]))
-dataCRound = np.around(dataC, 3)
+#puts cart data together w/ height and slope
+dataC = np.hstack(((rad * np.cos(theta)).reshape(len(dataP),1), (rad * np.sin(theta)).reshape(len(dataP), 1), dataP[:,2:]))
 
-#np.savetxt('fullcartdata.csv', dataCRound, delimiter=',')
+#rounds data
+#dataCRound = np.around(dataC, 3)
 
-plot(dataCRound[0:10000,:])
-
+#saves unrounded data
+np.savetxt('fullcartdata.txt', dataC, delimiter=',')
+#saves rounded data
+#np.savetxt('fullcartdatar.txt', dataCRound, delimiter=',')
