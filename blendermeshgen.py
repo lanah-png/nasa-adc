@@ -14,7 +14,7 @@ def vert(x,y,z):
     return (x, y, z) 
 
 # generate verts
-file = open("C:/Users/836844/OneDrive - Loudoun County Public Schools/Documents/squarefulldatascale1.txt", "r")
+file = open("squarefulldatascale1.txt", "r")
 s = file.read().split("\n")
 
 size = len(s)
