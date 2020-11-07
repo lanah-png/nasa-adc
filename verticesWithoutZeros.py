@@ -1,9 +1,9 @@
 #get coords for mesh generation
 
-file = open("C:/Users/836844/OneDrive - Loudoun County Public Schools/Documents/squarefulldatascale1.txt", "r")
+file = open("squarefulldatascale1.txt", "r")
 s = file.read().split("\n")
 
-out = open("C:/Users/836844/OneDrive - Loudoun County Public Schools/Documents/coords.txt", "a")
+out = open("coords.txt", "a")
 
 size = len(s)
 
