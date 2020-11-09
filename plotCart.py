@@ -39,17 +39,32 @@ for row in data:
     x_coordinate =(int)(((row[0]-xmin)/(xmax-xmin)) *(points-1))
     y_coordinate =(int)(((row[1]-ymin)/(ymax-ymin))* (points-1))
     z[x_coordinate][y_coordinate] = row[2]
+    #if you want to plot slope
+    #z[x_coordinate][y_coordinate] = row[3]
  
 #
 temp = z[:500,:]
 
-fig = plt.figure()
+#gets rid of plane of zeros
+z[z==0] = np.nan
+
+#plots in 3d
+f1 = plt.figure(1)
 ax = plt.axes(projection='3d')
 X = np.linspace(xmin,xmax,points)
 Y = np.linspace(ymin,ymax,points)
 Z = z
 X,Y = np.meshgrid(X,Y)
 ax.plot_surface(X,Y,Z, cmap='viridis')
+
+#plots in 2d
+f2 = plt.figure(2)
+ax = plt.axes()
+X = np.linspace(xmin,xmax,points)
+Y = np.linspace(ymin,ymax,points)
+Z = z
+X,Y = np.meshgrid(X,Y)
+ax.contourf(X,Y,Z, cmap='viridis')
 
 #saves the square matrix to a txt file
 #np.savetxt('squarefulldata.txt', z, delimiter=',')
