@@ -1,5 +1,2 @@
 # nasa-adc
-We're struggling.
-
-**Update:**
-Still struggling, but progress has been made.
+Project to model lunar south pole. This repository is incomplete.
